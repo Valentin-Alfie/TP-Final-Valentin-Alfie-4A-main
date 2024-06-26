@@ -5,41 +5,39 @@ using UnityEngine;
 public class Codigo : MonoBehaviour
 {
     public GameObject[] Objetos;
-    public int elemento;
+    public int minX;
+    public int maxX;
+    int cantidad;
+    int tipo;
+    Vector3 spawnPosicion;
+    Quaternion spawnRotacion;
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 1; i < Objetos.Length; i++)
+        for (int i = 0; i < Objetos.Length; i++)
         {
             Objetos[i].SetActive(false);
         }
+        tipo = Random.Range(0, 26);
+        Objetos[tipo].SetActive(true);
+        cantidad = Random.Range(minX, maxX);
+        spawnPosicion = Objetos[tipo].transform.position;
+        spawnRotacion = Objetos[tipo].transform.rotation;
+        InvokeRepeating("SpawnObjeto", 0, 1);
     }
 
     // Update is called once per frame
-    void Update()
+    public void SpawnObjeto()
     {
-        if(Input.GetKeyDown(KeyCode.RightArrow))
-            {
-            elemento++;
-            if (27 <= elemento)
-                {
-                    elemento = 26;
-                }
-            Objetos[elemento].SetActive(true);
-            Objetos[elemento-1].SetActive(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (cantidad > 0)
         {
-            elemento--;
-            if (elemento < 0)
-            {
-                elemento = 0;
-            }
-            Objetos[elemento].SetActive(true);
-            Objetos[elemento + 1].SetActive(false);
-        } 
+            Instantiate(Objetos[tipo], spawnPosicion, spawnRotacion);
+            cantidad--;
+
+        }
+        else 
+        {
+            CancelInvoke("SpawnObjeto");
+        }
     }
-
-
 }
