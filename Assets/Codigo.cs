@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Codigo : MonoBehaviour
 {
@@ -11,11 +12,14 @@ public class Codigo : MonoBehaviour
     int cantidad;
     int SpawnsRestantes;
     int tipo;
+    string resultado;
+    int resultadoInt;
     public GameObject panelRespuesta;
     public GameObject panelError;
     public GameObject panelNotificaciones;
     public InputField inputResultado;
     public Text textoNotificaciones;
+    public Text textoJugarOtraVez;
 
     Vector3 spawnPosicion;
     Quaternion spawnRotacion;
@@ -54,7 +58,7 @@ public class Codigo : MonoBehaviour
 
     public void Respuesta()
     {
-        string resultado = inputResultado.text;
+        resultado = inputResultado.text;
         if (resultado == "")
         {
             panelError.SetActive(true);
@@ -62,18 +66,21 @@ public class Codigo : MonoBehaviour
         }
         else
         {
-            int resultadoInt = int.Parse(resultado);
+            resultadoInt = int.Parse(resultado);
             if (resultadoInt == cantidad + 1)
             {
                 panelNotificaciones.SetActive(true);
                 panelRespuesta.SetActive(false);
                 textoNotificaciones.text = "LA RESPUESTA ES CORRECTA!";
+                textoJugarOtraVez.text = "REINICIAR DESAFIO";
+
             }
             else
             {
                 panelNotificaciones.SetActive(true);
                 panelRespuesta.SetActive(false);
                 textoNotificaciones.text = "LA RESPUESTA ES INCORRECTA!";
+                textoJugarOtraVez.text = "VOLVER A INTENTARLO";
             }
         }
     }
@@ -84,9 +91,20 @@ public class Codigo : MonoBehaviour
         panelRespuesta.SetActive(true);
     }
 
-    public void BotonNotificaciones()
+    public void BotonJugarOtraVez()
     {
-        panelNotificaciones.SetActive(false);
-        panelRespuesta.SetActive(true);
+        if (resultadoInt == cantidad +1) {
+            SceneManager.LoadScene("Cuantos hay");
+        }
+        else
+        {
+            panelNotificaciones.SetActive(false);
+            panelRespuesta.SetActive(true);
+        }
+    }
+
+    public void BotonSalir()
+    {
+        SceneManager.LoadScene("SeleccionarJuegos");
     }
 }
