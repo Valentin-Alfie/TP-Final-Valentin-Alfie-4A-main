@@ -2225,6 +2225,11 @@ MonoBehaviour:
   - {fileID: 1593368421}
   minX: 0
   maxX: 10
+  panelRespuesta: {fileID: 592826643}
+  panelError: {fileID: 1764600467}
+  panelNotificaciones: {fileID: 1819937916}
+  inputResultado: {fileID: 73513357}
+  textoNotificaciones: {fileID: 1616873626}
 --- !u!4 &991527079
 Transform:
   m_ObjectHideFlags: 0
