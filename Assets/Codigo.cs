@@ -31,12 +31,11 @@ public class Codigo : MonoBehaviour
             Objetos[i].SetActive(false);
         }
         tipo = Random.Range(0, 26);
-        Objetos[tipo].SetActive(true);
         cantidad = Random.Range(minX, maxX);
         SpawnsRestantes = cantidad;
         spawnPosicion = Objetos[tipo].transform.position;
         spawnRotacion = Objetos[tipo].transform.rotation;
-        InvokeRepeating("SpawnObjeto", 1, 1);
+        InvokeRepeating("SpawnObjeto", 0, 1);
         panelRespuesta.SetActive(true);
         panelError.SetActive(false);
         panelNotificaciones.SetActive(false);
@@ -47,7 +46,8 @@ public class Codigo : MonoBehaviour
     {
         if (SpawnsRestantes > 0)
         {
-            Instantiate(Objetos[tipo], spawnPosicion, spawnRotacion);
+            GameObject objetoInstanciado = Instantiate(Objetos[tipo], spawnPosicion, spawnRotacion);
+            objetoInstanciado.SetActive(true);
             SpawnsRestantes--;
         }
         else
@@ -67,7 +67,7 @@ public class Codigo : MonoBehaviour
         else
         {
             resultadoInt = int.Parse(resultado);
-            if (resultadoInt == cantidad + 1)
+            if (resultadoInt == cantidad)
             {
                 panelNotificaciones.SetActive(true);
                 panelRespuesta.SetActive(false);
@@ -93,7 +93,7 @@ public class Codigo : MonoBehaviour
 
     public void BotonJugarOtraVez()
     {
-        if (resultadoInt == cantidad +1) {
+        if (resultadoInt == cantidad) {
             SceneManager.LoadScene("Cuantos hay");
         }
         else
