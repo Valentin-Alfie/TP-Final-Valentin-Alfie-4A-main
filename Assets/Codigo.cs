@@ -46,7 +46,7 @@ public class Codigo : MonoBehaviour
     {
         if (SpawnsRestantes > 0)
         {
-            GameObject objetoInstanciado = Instantiate(Objetos[tipo], spawnPosicion, spawnRotacion);
+            GameObject objetoInstanciado = Instantiate(Objetos[tipo], new Vector3(Random.Range(-10,10), 0 , Random.Range(-10, 10)), new Quaternion(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180), 0));
             objetoInstanciado.SetActive(true);
             SpawnsRestantes--;
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2190,7 +2190,7 @@ MonoBehaviour:
   - {fileID: 6426455367522592710}
   - {fileID: 877087135}
   - {fileID: 1593368421}
-  minX: 0
+  minX: 1
   maxX: 10
   panelRespuesta: {fileID: 592826643}
   panelError: {fileID: 1764600467}
@@ -4937,7 +4937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: fcbb33b35d0931e46861dba52bebec40, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fcbb33b35d0931e46861dba52bebec40, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5034,8 +5034,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.008, y: -0.02, z: 0.02}
-  m_Center: {x: -0.004, y: -4.4020232e-11, z: 0}
+  m_Size: {x: 0.02, y: 0.02, z: 0.02}
+  m_Center: {x: 0, y: -4.4020232e-11, z: 0}
 --- !u!1 &785945327755764160
 GameObject:
   m_ObjectHideFlags: 0
