@@ -21,8 +21,6 @@ public class Codigo : MonoBehaviour
     public Text textoNotificaciones;
     public Text textoJugarOtraVez;
 
-    Vector3 spawnPosicion;
-    Quaternion spawnRotacion;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +31,6 @@ public class Codigo : MonoBehaviour
         tipo = Random.Range(0, 26);
         cantidad = Random.Range(minX, maxX);
         SpawnsRestantes = cantidad;
-        spawnPosicion = Objetos[tipo].transform.position;
-        spawnRotacion = Objetos[tipo].transform.rotation;
         InvokeRepeating("SpawnObjeto", 0, 1);
         panelRespuesta.SetActive(true);
         panelError.SetActive(false);
@@ -46,7 +42,10 @@ public class Codigo : MonoBehaviour
     {
         if (SpawnsRestantes > 0)
         {
-            GameObject objetoInstanciado = Instantiate(Objetos[tipo], new Vector3(Random.Range(-10,10), 0 , Random.Range(-10, 10)), new Quaternion(Random.Range(-360, 360), Random.Range(-360, 360), Random.Range(-360, 360), 0));
+            Quaternion spawnRotacion = Objetos[tipo].transform.rotation;
+            int variacionRotacion = Random.Range(-60, 60);
+            Quaternion rotacionVariada = spawnRotacion * Quaternion.Euler(variacionRotacion, variacionRotacion, variacionRotacion);
+            GameObject objetoInstanciado = Instantiate(Objetos[tipo], new Vector3(Random.Range(-10,10), 0 , Random.Range(-10, 10)), rotacionVariada);
             objetoInstanciado.SetActive(true);
             SpawnsRestantes--;
         }
