@@ -80,6 +80,7 @@ public class Codigo : MonoBehaviour
                 panelRespuesta.SetActive(false);
                 textoNotificaciones.text = "LA RESPUESTA ES INCORRECTA!";
                 textoJugarOtraVez.text = "VOLVER A INTENTARLO";
+                inputResultado.text = "";
             }
         }
     }
